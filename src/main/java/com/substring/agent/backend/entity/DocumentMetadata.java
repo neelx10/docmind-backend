@@ -34,8 +34,11 @@ public class DocumentMetadata {
 
     @Column(length=1000)
     private String errorMessage;
-
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }
